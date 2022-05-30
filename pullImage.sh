@@ -1,18 +1,19 @@
 
-# # *** docker pull image list of rke
-# while IFS= read -r i; do
-#     docker pull $i
-# done < $(pwd)/imageList
+# *** docker pull image list of rke
+while IFS= read -r i; do
+    docker pull $i
+done < $(pwd)/images/imageList
 
+sleep 5
 
-# # *** docker save all rke image to tar file
-# while IFS= read -r i; do
+# *** docker save all rke image to tar file
+while IFS= read -r i; do
 
-#     line=$(echo $i | sed -e "s/\//-/g" -e "s/\:/-/g")
+    line=$(echo $i | sed -e "s/\//-/g" -e "s/\:/-/g")
 
-#     docker save $i > $(pwd)/images/$line.tar
-#     echo "the $i image save to tar file"
-# done < $(pwd)/imageList
+    docker save $i > $(pwd)/images/$line.tar
+    echo "the $i image save to tar file"
+done < $(pwd)/images/imageList
 
 sleep 5
 
